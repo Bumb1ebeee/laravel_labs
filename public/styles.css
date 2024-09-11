@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+.cards {
+    display: flex;
+    flex-direction: row;
+
+}
+.card_item {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    background-color: #c8abf3;
+}
+
+.null {
+    background-color: rgba(158, 147, 177, 0.58);
+}
