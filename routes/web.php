@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\productController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', function () {
-    return view('products', ['products' => $products = [
-        ["name" => "Orange", "cost" => 50000000, "amount" => 27],
-        ["name" => "Banana", "cost" => 120000000, "amount" => 17],
-        ["name" => "Bread", "cost" => 70000000, "amount" => 0],
-    ]]);
-});
+Route::get('/products',[ProductController::class,'index'])->name('products.index');
