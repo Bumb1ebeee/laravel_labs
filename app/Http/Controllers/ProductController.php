@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductPage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +30,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'amount' => 'required|integer|min:1',
+        ]);
+
+        $product = Product::findOrFail($validated['product_id']);
+        $totalPrice = $product->price * $validated['amount'];
+
+        $order = new ProductPage();
+        $order->product_id = $product->id;
+        $order->amount = $validated['amount'];
+        $order->total_price = $totalPrice;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Заказ успешно оформлен на сумму ' . $totalPrice . ' руб.');
     }
 
     /**
@@ -38,7 +52,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
     }
 
     /**
