@@ -17,19 +17,7 @@ class ProductController extends Controller
         return view('products', ['products' => $products]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
+    public function order(Request $request) {
         $validated = $request->validate([
             'product_id' => 'required|exists:products,id',
             'amount' => 'required|integer|min:1',
@@ -44,7 +32,23 @@ class ProductController extends Controller
         $order->total_price = $totalPrice;
         $order->save();
 
-        return redirect()->back()->with('success', 'Заказ успешно оформлен на сумму ' . $totalPrice . ' руб.');
+        return redirect()->back()->with('success', "Заказ успешно оформлен на сумму $totalPrice руб.");
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**

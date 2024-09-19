@@ -25,4 +25,4 @@ Route::get('products/{id}',function($id){
     return view('productPages',['product'=>Product::find($id)]);
 });
 
-Route::post('/order', [ProductController::class, 'store']);
+Route::post('/order', [ProductController::class, 'order']);
