@@ -8,5 +8,5 @@
     @if ($product['amount'] == 0)
         <p class='card-amount'>Нет в наличии</p>
     @endif
-    <a href="{{url('/products/' . $product-> id )}}">подробнее</a>
+    <a href="{{url("/products/$product->id")}}">подробнее</a>
 </li>

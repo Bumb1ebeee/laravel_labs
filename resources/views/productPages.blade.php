@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\productController;?>
+?>
 <!doctype html>
 <html lang="ru">
 <head>

@@ -9,7 +9,10 @@ class ProductPage extends Model
 {
     use HasFactory;
 
-    protected $data = ['product_id', 'amount', 'total_price'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function product()
     {

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('styles.css') }}">
 </head>
 <body>
-
+<a href="/profile">Профиль</a>
 <ul class='cards'>
     @foreach ($products as $product)
         <x-productCard :product="$product" />

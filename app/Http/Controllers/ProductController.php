@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductPage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -25,9 +26,13 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($validated['product_id']);
         $totalPrice = $product->price * $validated['amount'];
+        /*if(Auth::user() == null){
+            return redirect()->back()->with('success', "Зарегистрируйтесь, прежде чем делать заказ.");
+        }*/
 
         $order = new ProductPage();
         $order->product_id = $product->id;
+        $order->user_id = Auth::user()->id;
         $order->amount = $validated['amount'];
         $order->total_price = $totalPrice;
         $order->save();
