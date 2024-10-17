@@ -25,6 +25,7 @@
                 <p>Товар: <b>{{ $order->product->name }}</b></p>
                 <p>Количество: {{ $order->amount }}</p>
                 <p>Сумма: {{ $order->total_price }} руб.</p>
+                <p>Статус: {{$order->status}}</p>
             </li>
         @endforeach
     </ul>

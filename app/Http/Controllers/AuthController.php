@@ -22,7 +22,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($validated)) {
-            $request->session()->regenerate();
+
             return redirect()->intended('products'); /*чтобы посетил ту стр, которую хотел до этого*/
         }
 
@@ -31,8 +31,6 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
         return redirect('/products');
     }
     /**
