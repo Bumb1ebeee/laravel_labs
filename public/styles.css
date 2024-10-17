@@ -2,13 +2,14 @@
     padding: 0;
     margin: 0;
 }
-li {
-    list-style: none;
+
+
+body {
+    margin: 20px 50px;
 }
 .cards {
     display: flex;
     flex-direction: row;
-
 }
 .card_item {
     border: 1px solid #000000;
@@ -18,7 +19,25 @@ li {
     width: 200px;
     background-color: #c8abf3;
 }
-
+.cards li {
+    list-style: none;
+}
 .null {
     background-color: rgba(158, 147, 177, 0.58);
+}
+
+TABLE {
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    width: 300px; /* Ширина таблицы */
+}
+TH, TD {
+    border: 1px solid black; /* Параметры рамки */
+    text-align: center; /* Выравнивание по центру */
+    padding: 4px; /* Поля вокруг текста */
+}
+TH {
+    background: #c8abf3; /* Цвет фона ячейки */
+    height: 40px; /* Высота ячеек */
+    vertical-align: bottom; /* Выравнивание по нижнему краю */
+    padding: 10px; /* Убираем поля вокруг текста */
 }

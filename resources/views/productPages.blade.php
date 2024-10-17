@@ -1,14 +1,5 @@
-<?php
-?>
-    <!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('styles.css') }}">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
 <div>
     <h2>{{ $product['name'] }}</h2>
     <p class='card-price'>Цена: {{ $product['price']}} руб.</p>
@@ -31,8 +22,4 @@
         </div>
     @endif
 </div>
-
-</body>
-</html>
-
-<?php
+@endsection
