@@ -1,31 +1,22 @@
-<?php
- ?>
-    <!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<form action="/register" method="post">
+@extends('layouts.main')
+@section('content')
+    <a href="/login">Войти</a>
+<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md" action="/register" method="post">
     @csrf
-    <label for="register-name">Имя:</label>
-    <input type="text" id="register-name" name="name" required>
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="register-name">Имя:</label>
+    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="register-name" name="name" required>
 
-    <label for="register-email">Почта:</label>
-    <input type="email" id="register-email" name="email" required>
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="register-email">Почта:</label>
+    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" id="register-email" name="email" required>
 
-    <label for="register-password">Пароль:</label>
-    <input type="password" id="register-password" name="password" required>
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="register-password">Пароль:</label>
+    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="register-password" name="password" required>
 
-    <label for="register-password-confirmation">Подтвердите пароль:</label>
-    <input type="password" id="register-password-confirmation" name="password_confirmation" required>
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="register-password-confirmation">Подтвердите пароль:</label>
+    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="register-password-confirmation" name="password_confirmation" required>
 
     <div class="div_button">
-        <button type="submit" class="btn">Зарегистрироваться</button>
+        <button class="items-center my-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit">Зарегистрироваться</button>
     </div>
 
     @if(session('success'))
@@ -44,6 +35,4 @@
         </div>
     @endif
 </form>
-</body>
-</html>
-
+@endsection

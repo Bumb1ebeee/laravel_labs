@@ -20,17 +20,22 @@ class AdminController extends Controller
             'order_id' => 'required',
         ]);
         $order = ProductPage::findOrFail($validated['order_id']);
-        $product = Product::findOrFail($order['product_id']);
-        $product['amount'] = $product['amount'] - $order['amount'];
-        if ($product['amount'] < 0) {
-            session()->put("error_{$validated['order_id']}", "Недостаточно продукта.");
-        } else if ($product['amount'] >= 0) {
+
+        if ($order->status == 'новый') {
+            if ($order->product->amount < $order->amount) {
+                session()->put("error_{$validated['order_id']}", "Недостаточно продукта.");
+                return redirect('/admin_profile')->withInput();
+            }
+
             $order->status = 'одобрен';
-            $product->save();
+            $order->save();
+
+            $order->product->amount -= $order->amount;
+            $order->product->save();
+
             session()->forget("error_{$validated['order_id']}");
         }
 
-        $order->save();
         return redirect('/admin_profile');
     }
 
@@ -40,10 +45,10 @@ class AdminController extends Controller
             'order_id' => 'required',
         ]);
         $order = ProductPage::findOrFail($validated['order_id']);
-        $order->status = 'доставлен';
-        $order->save();
+        if ($order->status == 'одобрен') {
+            $order->status = 'доставлен';
+            $order->save();
+        }
         return redirect('/admin_profile');
     }
 }
-
-

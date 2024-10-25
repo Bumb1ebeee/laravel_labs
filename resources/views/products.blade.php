@@ -5,4 +5,5 @@
             <x-productCard :product="$product" />
         @endforeach
     </ul>
+   <div class="">{{$products->links()}}</div>
 @endsection

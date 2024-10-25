@@ -7,15 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('styles.css') }}">
+    @vite('resources/css/app.css')
 </head>
 <body>
-<a href="/products">Продукты</a>
-<a href="/profile">Профиль</a>
-@if(Auth::check())
-    @if(Auth::user()->role=='admin')
-        <a href="/admin_profile">Администратор</a><br>
-    @endif
-@endif
-@yield('content')
+<div class="mx-40">
+    <nav class="text-center">
+        <a href="/products" class="mr-6 text-grey-500 hover:text-grey-800">Продукты</a>
+        <a href="/profile" class="mr-6 text-grey-500 hover:text-grey-800">Профиль</a>
+        @if(Auth::check())
+            @if(Auth::user()->role=='admin')
+                <a href="/admin_profile" class="mr-6 text-grey-500 hover:text-grey-800">Администратор</a><br>
+            @endif
+        @endif
+    </nav>
+
+    @yield('content')
+</div>
+
 </body>
 </html>

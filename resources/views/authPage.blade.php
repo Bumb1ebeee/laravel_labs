@@ -1,23 +1,13 @@
-<?php
-
-use App\Http\Controllers\RegisterController; ?>
-    <!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<form action="/login" method="post">
+@extends('layouts.main')
+@section('content')
+    <a href="/register">Регистрация</a>
+<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md" action="/login" method="post">
     @csrf
-    <label for="login-email">Почта:</label>
-    <input type="email" id="login-email" name="email" required>
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="login-email">Почта:</label>
+    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" id="login-email" name="email" required>
 
-    <label for="login-password">Пароль:</label>
-    <input type="password" id="login-password" name="password" required>
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="login-password">Пароль:</label>
+    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="login-password" name="password" required>
 
     @if(session('error'))
         <div style="color:red;">
@@ -26,9 +16,8 @@ use App\Http\Controllers\RegisterController; ?>
     @endif
 
     <div class="div_button">
-        <button type="submit" class="btn">Войти</button>
+        <button class="items-center my-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit" >Войти</button>
     </div>
 </form>
-</body>
-</html>
+@endsection
 
